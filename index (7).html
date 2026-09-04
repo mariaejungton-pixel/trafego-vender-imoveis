@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tráfego que Vende Imóveis | Evento Online — 26 de Setembro</title>
+<meta name="description" content="Como estruturar campanhas de tráfego pago que geram leads qualificados e clientes compradores para o mercado imobiliário. Evento online pelo Zoom, 26 de setembro, a partir das 9h.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #110D18;
+    --bg-alt: #17111F;
+    --surface: #1D1626;
+    --surface-line: #322A3D;
+    --ink: #F3EEE7;
+    --ink-dim: #B3A8BC;
+    --ink-faint: #7A7086;
+    --plum: #9C2B6E;
+    --plum-bright: #C93E8C;
+    --gold: #C9A227;
+    --gold-soft: #E4C765;
+    --serif: 'Fraunces', serif;
+    --sans: 'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .wrap-narrow{max-width:760px;margin:0 auto;padding:0 24px;}
+
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-0.01em;}
+  .eyebrow{
+    font-size:13px;
+    color:var(--gold-soft);
+    font-weight:500;
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);display:inline-block;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 30px;
+    border-radius:2px;
+    font-weight:600;
+    font-size:15px;
+    background:var(--plum);
+    color:var(--ink);
+    border:1px solid var(--plum-bright);
+    transition:background .25s ease, transform .25s ease;
+    cursor:pointer;
+  }
+  .btn:hover{background:var(--plum-bright);transform:translateY(-1px);}
+  .btn-ghost{
+    background:transparent;
+    border:1px solid var(--surface-line);
+    color:var(--ink-dim);
+  }
+  .btn-ghost:hover{border-color:var(--gold);color:var(--ink);transform:none;}
+
+  /* NAV */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(17,13,24,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--surface-line);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;max-width:1120px;margin:0 auto;
+  }
+  .brand{font-family:var(--serif);font-size:17px;font-weight:600;}
+  .brand span{color:var(--gold-soft);}
+  .nav-meta{font-size:13px;color:var(--ink-faint);display:none;}
+  @media(min-width:720px){.nav-meta{display:block;}}
+  .nav-cta{padding:10px 20px;font-size:13px;}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;align-items:center;
+    padding:140px 0 90px;
+    background:
+      radial-gradient(ellipse 900px 500px at 85% 15%, rgba(156,43,110,.28), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 0% 90%, rgba(201,162,39,.12), transparent 60%),
+      var(--bg);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:48px;
+    align-items:end;
+  }
+  @media(min-width:900px){
+    .hero-grid{grid-template-columns:1.3fr .9fr;}
+  }
+  .hero h1{
+    font-size:clamp(40px,6.5vw,74px);
+    max-width:14ch;
+    margin-bottom:26px;
+  }
+  .hero p.lede{
+    font-size:19px;
+    color:var(--ink-dim);
+    max-width:46ch;
+    margin-bottom:36px;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:44px;}
+  .hero-facts{
+    display:grid;grid-template-columns:repeat(3,auto);gap:28px;
+    border-top:1px solid var(--surface-line);
+    padding-top:22px;
+  }
+  .fact-label{font-size:12px;color:var(--ink-faint);margin-bottom:4px;}
+  .fact-val{font-size:15px;font-weight:600;}
+
+  .hero-side{
+    background:var(--surface);
+    border:1px solid var(--surface-line);
+    padding:28px;
+    position:relative;
+  }
+  .hero-side::before{
+    content:"";position:absolute;top:0;left:0;width:3px;height:100%;
+    background:linear-gradient(180deg,var(--gold),var(--plum));
+  }
+  .hero-side .tag{font-size:12px;color:var(--gold-soft);margin-bottom:14px;}
+  .hero-side p{font-size:15px;color:var(--ink-dim);margin-bottom:16px;}
+  .zoom-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;color:var(--ink);
+    background:rgba(43,110,201,.12);
+    border:1px solid rgba(74,144,226,.4);
+    padding:8px 14px;
+  }
+
+  /* SECTION SHELL */
+  section{padding:110px 0;position:relative;}
+  .section-tag{
+    font-size:13px;color:var(--ink-faint);
+    display:flex;align-items:center;gap:10px;margin-bottom:20px;
+  }
+  .section-tag b{color:var(--gold-soft);font-weight:600;}
+  h2.section-title{font-size:clamp(30px,4vw,46px);max-width:16ch;margin-bottom:18px;}
+  p.section-sub{font-size:17px;color:var(--ink-dim);max-width:52ch;margin-bottom:60px;}
+
+  /* TIMELINE (Antes / Depois / Agora) */
+  .timeline{
+    display:grid;grid-template-columns:1fr;gap:1px;
+    background:var(--surface-line);
+    border:1px solid var(--surface-line);
+  }
+  @media(min-width:800px){.timeline{grid-template-columns:1fr 1fr 1fr;}}
+  .tl-col{background:var(--bg-alt);padding:36px 30px;}
+  .tl-col.now{background:linear-gradient(165deg, rgba(156,43,110,.16), rgba(201,162,39,.08));}
+  .tl-head{font-family:var(--serif);font-size:22px;margin-bottom:22px;color:var(--ink-faint);}
+  .tl-col.now .tl-head{color:var(--gold-soft);}
+  .tl-list{list-style:none;}
+  .tl-list li{
+    padding:11px 0;
+    border-top:1px solid var(--surface-line);
+    font-size:15px;color:var(--ink-dim);
+  }
+  .tl-list li:first-child{border-top:none;}
+  .tl-col.now .tl-list li{color:var(--ink);}
+
+  .timeline-note{
+    margin-top:40px;font-size:17px;color:var(--ink-dim);max-width:56ch;
+  }
+  .timeline-note strong{color:var(--ink);font-weight:600;}
+
+  /* PROBLEM / FUNNEL */
+  .funnel{
+    display:flex;flex-wrap:wrap;gap:10px;margin-bottom:56px;
+  }
+  .funnel span{
+    font-size:13px;color:var(--ink-dim);
+    border:1px solid var(--surface-line);
+    padding:8px 16px;
+  }
+  .funnel span:not(:last-child)::after{content:"→";margin-left:10px;color:var(--ink-faint);}
+
+  .leak-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+    background:var(--surface-line);border:1px solid var(--surface-line);
+  }
+  @media(min-width:700px){.leak-grid{grid-template-columns:repeat(3,1fr);}}
+  .leak-item{
+    background:var(--bg-alt);padding:22px 20px;font-size:14.5px;color:var(--ink-dim);
+  }
+
+  /* AI/HUMAN -> traffic/human split */
+  .split{display:grid;grid-template-columns:1fr;gap:1px;background:var(--surface-line);border:1px solid var(--surface-line);}
+  @media(min-width:800px){.split{grid-template-columns:1fr auto 1fr;}}
+  .split-col{background:var(--bg-alt);padding:40px 34px;}
+  .split-mid{
+    display:flex;align-items:center;justify-content:center;
+    background:var(--bg-alt);padding:20px;
+    font-family:var(--serif);font-size:20px;color:var(--gold-soft);
+  }
+  .split-head{font-family:var(--serif);font-size:24px;margin-bottom:20px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chips span{font-size:13.5px;color:var(--ink-dim);border:1px solid var(--surface-line);padding:6px 13px;}
+  .split-footer{margin-top:44px;font-size:18px;max-width:60ch;color:var(--ink-dim);}
+  .split-footer strong{color:var(--ink);font-weight:600;}
+
+  /* CHAPTERS */
+  .chapters{display:grid;grid-template-columns:1fr;gap:1px;background:var(--surface-line);border:1px solid var(--surface-line);}
+  @media(min-width:700px){.chapters{grid-template-columns:1fr 1fr;}}
+  .chapter{background:var(--bg-alt);padding:34px 30px;}
+  .chapter .num{font-size:13px;color:var(--gold-soft);margin-bottom:14px;font-weight:500;}
+  .chapter h3{font-size:20px;margin-bottom:10px;}
+  .chapter p{font-size:14.5px;color:var(--ink-dim);}
+
+  .chapters-cta{
+    margin-top:48px;display:flex;flex-wrap:wrap;align-items:center;gap:24px;
+  }
+  .chapters-cta .meta{font-size:13px;color:var(--ink-faint);}
+
+  /* DEMO */
+  .demo{
+    display:grid;grid-template-columns:1fr;gap:44px;
+  }
+  @media(min-width:900px){.demo{grid-template-columns:1fr 1fr;}}
+  .demo-phone{
+    background:var(--surface);border:1px solid var(--surface-line);padding:26px;
+  }
+  .demo-phone .lbl{font-size:12px;color:var(--gold-soft);margin-bottom:16px;}
+  .msg{
+    background:var(--bg-alt);border:1px solid var(--surface-line);
+    padding:16px;font-size:14.5px;color:var(--ink);margin-bottom:8px;
+  }
+  .msg .time{font-size:11px;color:var(--ink-faint);margin-top:8px;display:block;}
+  .demo-steps{list-style:none;counter-reset:step;}
+  .demo-steps li{
+    counter-increment:step;
+    padding:14px 0 14px 34px;position:relative;
+    border-top:1px solid var(--surface-line);
+    font-size:14.5px;color:var(--ink-dim);
+  }
+  .demo-steps li:first-child{border-top:none;}
+  .demo-steps li::before{
+    content:counter(step);
+    position:absolute;left:0;top:14px;
+    font-size:12px;color:var(--gold-soft);
+    font-family:var(--serif);
+  }
+  .demo-note{margin-top:40px;font-size:18px;max-width:60ch;color:var(--ink-dim);}
+  .demo-note strong{color:var(--ink);font-weight:600;}
+
+  /* SPEAKER */
+  .speaker{
+    display:grid;grid-template-columns:1fr;gap:44px;align-items:start;
+  }
+  @media(min-width:860px){.speaker{grid-template-columns:.8fr 1.2fr;}}
+  .speaker-photo{
+    background:var(--surface);
+    border:1px solid var(--surface-line);
+    aspect-ratio:4/5;
+    overflow:hidden;
+  }
+  .speaker-photo img{width:100%;height:100%;object-fit:cover;object-position:68% 22%;}
+  .speaker-name{font-family:var(--serif);font-size:26px;margin-bottom:4px;}
+  .speaker-role{font-size:14px;color:var(--gold-soft);margin-bottom:22px;}
+  .speaker p{font-size:16px;color:var(--ink-dim);margin-bottom:16px;max-width:56ch;}
+  .speaker-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--surface-line);border:1px solid var(--surface-line);margin-top:30px;}
+  .speaker-stats div{background:var(--bg-alt);padding:18px 16px;}
+  .speaker-stats .n{font-family:var(--serif);font-size:22px;color:var(--gold-soft);}
+  .speaker-stats .l{font-size:12px;color:var(--ink-faint);margin-top:4px;}
+
+  /* FOR WHOM */
+  .whom{display:grid;grid-template-columns:1fr;gap:1px;background:var(--surface-line);border:1px solid var(--surface-line);}
+  @media(min-width:700px){.whom{grid-template-columns:repeat(4,1fr);}}
+  .whom-item{background:var(--bg-alt);padding:30px 24px;}
+  .whom-item h3{font-size:18px;margin-bottom:10px;}
+  .whom-item p{font-size:14px;color:var(--ink-dim);}
+
+  /* MANIFESTO */
+  .manifesto{
+    background:var(--bg-alt);
+    padding:130px 0;
+    text-align:center;
+  }
+  .manifesto-lines{font-family:var(--serif);font-size:clamp(20px,3.4vw,32px);line-height:1.55;color:var(--ink-dim);}
+  .manifesto-lines .bright{color:var(--ink);}
+  .manifesto-lines .gold{color:var(--gold-soft);}
+
+  /* FINAL CTA */
+  .final{
+    background:
+      radial-gradient(ellipse 800px 500px at 50% 0%, rgba(156,43,110,.25), transparent 60%),
+      var(--bg);
+    text-align:center;
+    padding:120px 0 100px;
+  }
+  .final .section-tag{justify-content:center;}
+  .final h2{font-size:clamp(32px,5vw,54px);max-width:16ch;margin:0 auto 20px;}
+  .final p.section-sub{margin:0 auto 50px;text-align:center;}
+
+  .pricing{
+    max-width:420px;margin:0 auto 40px;
+    background:var(--surface);border:1px solid var(--surface-line);
+    padding:36px;
+  }
+  .lot-tag{font-size:12px;color:var(--gold-soft);margin-bottom:14px;}
+  .price-row{display:flex;align-items:baseline;justify-content:center;gap:12px;margin-bottom:18px;}
+  .price-now{font-family:var(--serif);font-size:52px;color:var(--ink);}
+  .price-old{font-size:18px;color:var(--ink-faint);text-decoration:line-through;}
+  .bar-bg{height:6px;background:var(--surface-line);margin-bottom:10px;}
+  .bar-fill{height:100%;width:87%;background:linear-gradient(90deg,var(--gold),var(--plum-bright));}
+  .bar-label{font-size:12px;color:var(--ink-faint);margin-bottom:26px;}
+  .pricing .btn{width:100%;justify-content:center;}
+  .final .meta{font-size:13px;color:var(--ink-faint);}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--surface-line);padding:60px 0 40px;}
+  .footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px;margin-bottom:40px;}
+  footer .brand{margin-bottom:14px;}
+  footer p{font-size:14px;color:var(--ink-faint);max-width:38ch;}
+  .footer-meta{font-size:13px;color:var(--ink-faint);}
+  .footer-bottom{
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;
+    border-top:1px solid var(--surface-line);padding-top:24px;font-size:13px;color:var(--ink-faint);
+  }
+
+  ::selection{background:var(--plum);color:var(--ink);}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none!important;}}
+
+  /* MOBILE */
+  @media(max-width:640px){
+    .wrap,.wrap-narrow{padding:0 18px;}
+    .nav-inner{padding:14px 18px;}
+    .brand{font-size:15px;}
+    .nav-cta{padding:9px 14px;font-size:12.5px;}
+
+    .hero{padding:110px 0 60px;min-height:auto;}
+    .hero-grid{gap:34px;}
+    .hero h1{font-size:clamp(32px,10vw,44px);max-width:100%;}
+    .hero p.lede{font-size:16.5px;}
+    .hero-actions{flex-direction:column;align-items:stretch;}
+    .hero-actions .btn{justify-content:center;}
+    .hero-facts{grid-template-columns:1fr;gap:14px;}
+    .hero-side{padding:22px;}
+
+    section{padding:64px 0;}
+    h2.section-title{font-size:clamp(26px,7.5vw,34px);max-width:100%;}
+    p.section-sub{font-size:15.5px;margin-bottom:40px;}
+    .section-tag{font-size:12px;}
+
+    .tl-col{padding:26px 20px;}
+    .tl-head{font-size:19px;margin-bottom:16px;}
+    .timeline-note{font-size:15.5px;margin-top:30px;}
+
+    .funnel{gap:8px;}
+    .funnel span{font-size:12px;padding:7px 12px;}
+    .leak-grid{grid-template-columns:1fr 1fr;}
+    .leak-item{padding:16px 14px;font-size:13px;}
+
+    .split-col{padding:28px 22px;}
+    .split-head{font-size:20px;margin-bottom:16px;}
+    .split-mid{padding:14px;font-size:16px;}
+    .split-footer{font-size:16px;margin-top:32px;}
+
+    .chapter{padding:26px 22px;}
+    .chapter h3{font-size:18px;}
+    .chapters-cta{flex-direction:column;align-items:stretch;gap:16px;}
+    .chapters-cta .btn{text-align:center;justify-content:center;}
+
+    .demo{gap:30px;}
+    .demo-phone{padding:20px;}
+    .demo-note{font-size:16px;margin-top:30px;}
+
+    .speaker{gap:30px;}
+    .speaker-name{font-size:22px;}
+    .speaker p{font-size:15px;}
+    .speaker-stats{grid-template-columns:1fr;}
+
+    .whom-item{padding:24px 20px;}
+
+    .manifesto{padding:80px 0;}
+    .manifesto-lines{font-size:clamp(18px,6vw,24px);}
+
+    .final{padding:80px 0 70px;}
+    .final h2{font-size:clamp(28px,8vw,36px);}
+    .pricing{padding:28px 22px;max-width:100%;}
+    .price-now{font-size:42px;}
+    .price-row{flex-wrap:wrap;gap:8px;}
+
+    .footer-inner{flex-direction:column;gap:24px;}
+    .footer-bottom{flex-direction:column;align-items:flex-start;gap:14px;}
+    .footer-bottom .btn{width:100%;justify-content:center;}
+  }
+
+  @media(max-width:400px){
+    .leak-grid{grid-template-columns:1fr;}
+  }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1783001026279397');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1783001026279397&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">Tráfego que Vende <span>Imóveis</span></div>
+    <div class="nav-meta">26.09.2026 — A partir das 9h — Online pelo Zoom</div>
+    <a href="#inscricao" class="btn nav-cta">Garantir vaga</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Online e ao vivo — 26 de setembro, pelo Zoom</div>
+        <h1>Tráfego que vende imóveis</h1>
+        <p class="lede">Como estruturar campanhas de tráfego pago que trazem leads qualificados — pessoas prontas para comprar, não apenas para clicar.</p>
+        <div class="hero-actions">
+          <a href="#inscricao" class="btn">Quero garantir minha vaga</a>
+          <a href="#evento" class="btn btn-ghost">Conhecer o evento</a>
+        </div>
+        <div class="hero-facts">
+          <div><div class="fact-label">Data</div><div class="fact-val">26 de setembro</div></div>
+          <div><div class="fact-label">Início</div><div class="fact-val">A partir das 9h</div></div>
+          <div><div class="fact-label">Formato</div><div class="fact-val">Online, pelo Zoom</div></div>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="tag">Para quem vende imóveis</div>
+        <p>Um encontro para corretores, gestores e imobiliárias que querem parar de pagar por leads que não compram e começar a atrair quem realmente está pronto para fechar negócio.</p>
+        <span class="zoom-badge">Transmissão ao vivo pelo Zoom</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="evento">
+  <div class="wrap">
+    <div class="section-tag"><b>20 anos</b> de mudança na forma de gerar demanda no imobiliário</div>
+    <h2 class="section-title">Como o mercado imobiliário gerava clientes — e por que já não é suficiente.</h2>
+
+    <div class="timeline">
+      <div class="tl-col">
+        <div class="tl-head">Antes</div>
+        <ul class="tl-list">
+          <li>Panfletagem</li>
+          <li>Anúncio impresso</li>
+          <li>Plantão de vendas</li>
+          <li>Indicação</li>
+          <li>Rádio e outdoor</li>
+        </ul>
+      </div>
+      <div class="tl-col">
+        <div class="tl-head">Depois</div>
+        <ul class="tl-list">
+          <li>Portais</li>
+          <li>Facebook Ads</li>
+          <li>Portais premium</li>
+          <li>Redes sociais</li>
+          <li>Leads frios em massa</li>
+        </ul>
+      </div>
+      <div class="tl-col now">
+        <div class="tl-head">Agora</div>
+        <ul class="tl-list">
+          <li>Segmentação de público</li>
+          <li>Criativos que qualificam</li>
+          <li>Funis de conversão</li>
+          <li>Otimização por dados</li>
+          <li>Leads prontos para negociar</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="timeline-note">Hoje, gerar leads não é mais o desafio — <strong>gerar os leads certos é.</strong> Tráfego pago bem estruturado é a diferença entre encher a agenda do corretor de curiosos e entregar contatos que realmente compram.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-tag"><b>O problema</b> não costuma ser o que parece</div>
+    <h2 class="section-title">Talvez o problema não seja falta de leads.</h2>
+    <p class="section-sub">Talvez você esteja pagando caro por leads que nunca tiveram intenção real de comprar.</p>
+
+    <div class="funnel">
+      <span>Anúncio</span><span>Lead</span><span>Qualificação</span><span>Atendimento</span><span>Visita</span><span>Negociação</span><span>Venda</span>
+    </div>
+
+    <div class="leak-grid">
+      <div class="leak-item">Público mal segmentado</div>
+      <div class="leak-item">Criativo genérico</div>
+      <div class="leak-item">Sem remarketing</div>
+      <div class="leak-item">Verba mal distribuída</div>
+      <div class="leak-item">Lead sem qualificação</div>
+      <div class="leak-item">Corretor sem contexto</div>
+    </div>
+
+    <p class="timeline-note">Antes de investir mais em mídia, é preciso entender onde a verba está vazando — e por que ela não está virando cliente comprador.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-tag"><b>A combinação certa</b></div>
+    <h2 class="section-title">O futuro não é anúncio ou corretor. É tráfego certo com corretor pronto.</h2>
+
+    <div class="split">
+      <div class="split-col">
+        <div class="split-head">Tráfego pago</div>
+        <div class="chips">
+          <span>segmenta</span><span>atrai</span><span>filtra</span><span>qualifica</span><span>mede</span><span>otimiza</span><span>escala</span>
+        </div>
+      </div>
+      <div class="split-mid">+</div>
+      <div class="split-col">
+        <div class="split-head">Corretor</div>
+        <div class="chips">
+          <span>atende</span><span>negocia</span><span>cria confiança</span><span>interpreta</span><span>visita</span><span>fecha</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="split-footer">A campanha traz a pessoa certa até o corretor. <strong>O corretor faz o que só uma pessoa consegue fazer: converter confiança em venda.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-tag"><b>O que você vai ver no evento</b></div>
+    <h2 class="section-title">Seis capítulos sobre tráfego pago para o mercado imobiliário.</h2>
+
+    <div class="chapters">
+      <div class="chapter">
+        <div class="num">Capítulo 01</div>
+        <h3>Estratégia de campanhas para imóveis</h3>
+        <p>Como estruturar campanhas no Meta Ads voltadas especificamente para o setor imobiliário.</p>
+      </div>
+      <div class="chapter">
+        <div class="num">Capítulo 02</div>
+        <h3>Segmentação de público qualificado</h3>
+        <p>Como encontrar e alcançar quem realmente tem potencial e intenção de comprar um imóvel.</p>
+      </div>
+      <div class="chapter">
+        <div class="num">Capítulo 03</div>
+        <h3>Criativos que convertem</h3>
+        <p>O que funciona em anúncios para gerar leads reais — e não apenas cliques baratos.</p>
+      </div>
+      <div class="chapter">
+        <div class="num">Capítulo 04</div>
+        <h3>Funis de qualificação</h3>
+        <p>Como filtrar leads frios antes que cheguem até o corretor, poupando tempo e verba.</p>
+      </div>
+      <div class="chapter">
+        <div class="num">Capítulo 05</div>
+        <h3>Otimização e escala</h3>
+        <p>Como ler métricas de campanha e escalar investimento com segurança e previsibilidade.</p>
+      </div>
+      <div class="chapter">
+        <div class="num">Capítulo 06</div>
+        <h3>Da campanha à venda</h3>
+        <p>Como conectar tráfego pago, atendimento e fechamento em uma única operação comercial.</p>
+      </div>
+    </div>
+
+    <div class="chapters-cta">
+      <a href="#inscricao" class="btn">Quero garantir minha vaga</a>
+      <div class="meta">26/09/2026 • A partir das 9h • Online pelo Zoom</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-tag"><b>Demonstração</b> — não vamos só falar sobre isso, vamos mostrar</div>
+    <h2 class="section-title">Do clique no anúncio ao corretor com o lead pronto.</h2>
+
+    <div class="demo">
+      <div class="demo-phone">
+        <div class="lbl">Anúncio → Novo lead</div>
+        <div class="msg">Tenho interesse em apartamentos de até R$ 1,5 milhão na região.<span class="time">09:14</span></div>
+      </div>
+      <div>
+        <ul class="demo-steps">
+          <li>Anúncio segmentado exibido para o público certo</li>
+          <li>Lead preenche formulário qualificado</li>
+          <li>Respostas organizadas automaticamente</li>
+          <li>Lead pontuado por intenção de compra</li>
+          <li>CRM atualizado com o histórico</li>
+          <li>Corretor recebe o lead com todo o contexto</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="demo-note">O tráfego pago não substitui o corretor. <strong>Ele entrega o lead certo, no momento certo, para que o corretor entre na conversa já sabendo o que oferecer.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-tag"><b>Quem conduz</b></div>
+    <h2 class="section-title">7 anos gerando leads de qualidade para o mercado imobiliário.</h2>
+
+    <div class="speaker">
+      <div class="speaker-photo">
+        <img src="maria-eduarda.png" alt="Maria Eduarda Jungton, palestrante do evento Tráfego que Vende Imóveis">
+      </div>
+      <div>
+        <div class="speaker-name">Maria Eduarda Jungton</div>
+        <div class="speaker-role">Palestrante — Especialista em Tráfego Pago para o Mercado Imobiliário</div>
+        <p>Mais de sete anos dedicados a tráfego pago com foco exclusivo no setor imobiliário, estruturando campanhas que geram leads qualificados e, principalmente, clientes compradores.</p>
+        <p>Uma trajetória construída em cima de um princípio simples: <strong>não basta gerar volume de leads, é preciso gerar as pessoas certas</strong> — aquelas que de fato têm intenção e condição de comprar.</p>
+        <p>É essa combinação — domínio técnico de campanhas somado ao entendimento real do funil imobiliário — que estrutura essa imersão.</p>
+        <div class="speaker-stats">
+          <div><div class="n">7+</div><div class="l">anos com tráfego pago</div></div>
+          <div><div class="n">100%</div><div class="l">foco no imobiliário</div></div>
+          <div><div class="n">Leads</div><div class="l">qualificados e compradores</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-tag"><b>Para quem é</b></div>
+    <h2 class="section-title">Feito para quem vende, gere e constrói no mercado imobiliário.</h2>
+
+    <div class="whom">
+      <div class="whom-item">
+        <h3>Corretor</h3>
+        <p>Para quem quer parar de correr atrás de leads frios e passar a receber contatos com real intenção de compra.</p>
+      </div>
+      <div class="whom-item">
+        <h3>Gestor</h3>
+        <p>Para quem precisa entender onde a verba de mídia está sendo desperdiçada e como corrigir o funil.</p>
+      </div>
+      <div class="whom-item">
+        <h3>Dono de imobiliária</h3>
+        <p>Para quem quer construir uma máquina de geração de leads previsível, mensurável e escalável.</p>
+      </div>
+      <div class="whom-item">
+        <h3>Incorporador</h3>
+        <p>Para quem quer entender como tráfego pago pode melhorar a distribuição e conversão de leads em lançamentos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="manifesto">
+  <div class="wrap-narrow">
+    <p class="manifesto-lines">
+      O mercado mudou.<br>
+      O custo por clique mudou.<br>
+      A concorrência aumentou.<br>
+      Os leads ficaram mais caros.<br>
+      As plataformas mudaram as regras.<br>
+      <span class="bright">Mas quem entende o funil, continua vendendo.</span><br><br>
+      Não basta anunciar.<br>
+      É preciso segmentar, qualificar e otimizar.<br>
+      <span class="gold">O futuro não é mais anúncio.</span><br>
+      <span class="gold">É tráfego + estratégia + corretor pronto para fechar.</span>
+    </p>
+  </div>
+</div>
+
+<section class="final" id="inscricao">
+  <div class="wrap-narrow">
+    <div class="section-tag">26.09.2026 — A partir das 9h — Online pelo Zoom</div>
+    <h2>Tráfego que vende imóveis já começou a mudar o jogo.</h2>
+    <p class="section-sub">Venha entender como estruturar campanhas de tráfego pago que geram leads qualificados e clientes compradores para o seu negócio imobiliário.</p>
+
+    <div class="pricing">
+      <div class="lot-tag">Lote 1 — aberto agora</div>
+      <div class="price-row">
+        <span class="price-now">R$47</span>
+        <span style="font-size:13px;color:var(--ink-faint);">2º lote</span>
+        <span class="price-old">R$ 67</span>
+      </div>
+      <div class="bar-bg"><div class="bar-fill"></div></div>
+      <div class="bar-label">87% do 1º lote vendido</div>
+      <a href="https://pay.kiwify.com.br/VRGpKOa" target="_blank" rel="noopener" class="btn" onclick="if(window.fbq){fbq('track','InitiateCheckout');}">Quero garantir minha vaga</a>
+    </div>
+
+    <div class="meta">26/09/2026 • A partir das 9h • Online pelo Zoom • Vagas mediante inscrição</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <div class="brand">Tráfego que Vende Imóveis</div>
+        <p>Evento online para corretores, gestores, donos de imobiliária e incorporadores que querem gerar leads qualificados com tráfego pago.</p>
+      </div>
+      <div class="footer-meta">
+        26.09.2026 — 9h — Online, pelo Zoom<br>Vagas mediante inscrição
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>26/09 · 9h · Online pelo Zoom</div>
+      <a href="#inscricao" class="btn btn-ghost">Quero minha vaga</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
